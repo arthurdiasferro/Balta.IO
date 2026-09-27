@@ -1,6 +1,9 @@
+using Flunt.Validations;
+using PaymentContext.Shared.Entities;
+
 namespace PaymentContext.Domain.Entities;
 
-public class Subscription
+public class Subscription : Entity
 {
     public Subscription(DateTime expireDate)
     {
@@ -20,6 +23,11 @@ public class Subscription
 
     public void AddPayment(Payment payment)
     {
+        AddNotifications(new Contract<Payment>()
+            .Requires()
+            .IsGreaterThan(payment.PaidDate, DateTime.Now, "Subscription.Payment", "Payment date must be greater than now")
+        );
+
         _payments.Add(payment);
     }
 
@@ -33,6 +41,11 @@ public class Subscription
     {
         Active = false;
         LastUpdateDate = DateTime.UtcNow;
+    }
+
+    public bool IsActive()
+    {
+        return Active;
     }
 
 }

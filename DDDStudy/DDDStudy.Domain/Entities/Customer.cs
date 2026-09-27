@@ -1,5 +1,3 @@
-using DDDStudy.Domain.ValueObjects;
-
 namespace DDDStudy.Domain.Entities;
 
 public class Customer
