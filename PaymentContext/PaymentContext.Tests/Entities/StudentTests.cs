@@ -10,14 +10,14 @@ public class StudentTests
     private readonly Student _student;
     private readonly Subscription _subscription;
     private readonly Name _name;
-    private readonly EDocumentType _document;
+    private readonly Document _document;
     private readonly Email _email;
     private readonly Address _address;
 
     public StudentTests()
     {
         _name = new Name("Bruce", "Wayne");
-        _document = new EDocumentType("12332112332", Domain.Enums.EDocumentType.CPF);
+        _document = new Document("12332112332", Domain.Enums.EDocumentType.CPF);
         _email = new Email("bruce@wayne.com");
         _address = new Address("Street", "5", "Neighborhood", "City", "State", "Country", "ZipCode");
         _student = new Student(_name, _document, _email);
